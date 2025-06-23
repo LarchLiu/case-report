@@ -4,7 +4,7 @@ services:
   web:
     build: .
     ports:
-      - "1133:3000"
+      - "2233:3000"
     volumes:
       - 'case-report-data:/app/.data'
     environment:

@@ -67,7 +67,7 @@ function startEditingCaseReport(rowIndex: number, field: keyof CaseReport) {
 }
 
 async function finishEditingCaseReport() {
-  if (caseReports.value && caseReports.value.length && editingCell.value && editingCell.value.rowIndex) {
+  if (caseReports.value && caseReports.value.length && editingCell.value && editingCell.value.rowIndex >= 0) {
     const report = caseReports.value[editingCell.value.rowIndex]
     await $fetch('/api/report', {
       method: 'PATCH',
@@ -82,6 +82,7 @@ async function finishEditingCaseReport() {
 }
 
 function updateCaseReportCellValue(_event: Event, _rowIndex: number, _field: keyof CaseReport) {
+  console.log('Updating case report cell value', _rowIndex, _field)
   finishEditingCaseReport()
 }
 

@@ -73,8 +73,7 @@ async function finishEditingCaseReport() {
       method: 'PATCH',
       body: report,
     })
-    // No refresh needed for caseReports as it's a static display after fetch
-    await getCaseReport() // Refresh the case report data
+    await getCaseReport()
   }
   nextTick(() => {
     editingCell.value = null
@@ -82,7 +81,6 @@ async function finishEditingCaseReport() {
 }
 
 function updateCaseReportCellValue(_event: Event, _rowIndex: number, _field: keyof CaseReport) {
-  console.log('Updating case report cell value', _rowIndex, _field)
   finishEditingCaseReport()
 }
 
@@ -93,7 +91,6 @@ function openFileInput() {
 
 function handleFileChange(event: any) {
   const files = event.target.files
-  console.log(files.length)
   if (files) {
     for (let i = 0; i < files.length; i++) {
       const file = files[i]
@@ -129,7 +126,6 @@ async function uploadImages() {
     })
 
     alert(`有效病例信息: \n${res.info.map(u => `${u.user.name} ${u.case.hospital} ${u.case.report_date}`).join('\n')}\n${res.errorMessages.length ? `无效病例信息: \n${res.errorMessages.join('\n')}` : ''}`)
-    console.log('Upload successful:', res)
     if (res.errorMessages.length === 0) {
       images.value = []
     }
@@ -150,7 +146,6 @@ async function getCaseReport() {
     caseReports.value = response.sort((a, b) => {
       return new Date(a.report_date).getTime() - new Date(b.report_date).getTime()
     })
-    console.log(response)
   }
   catch (error: any) {
     console.error('Error fetching case report:', error.data)

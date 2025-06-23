@@ -342,7 +342,10 @@ async function deleteSelectedUsers() {
         {{ making ? '正在生成...' : '获取病例' }}
       </button>
     </div>
-    <div v-if="caseReports.length" class="overflow-x-auto">
+    <div v-if="caseReports.length" class="mt-4">
+      <CaseReportChart :case-reports="caseReports" />
+    </div>
+    <div v-if="caseReports.length" class="overflow-x-auto mt-4">
       <table class="min-w-full divide-y divide-gray-200">
         <thead class="bg-gray-50">
           <tr>
@@ -481,11 +484,6 @@ async function deleteSelectedUsers() {
           </tr>
         </tbody>
       </table>
-    </div>
-    <div>
-      <div v-if="caseReports.length">
-        <CaseReportChart :case-reports="caseReports" />
-      </div>
     </div>
   </div>
 </template>

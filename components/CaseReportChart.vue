@@ -86,7 +86,7 @@ function updateChart() {
         if (!params || params.length === 0 || !params[0] || !params[0].axisValue) {
           return ''
         }
-        let tooltipContent = `${params[0].value[2]}<br/>`
+        let tooltipContent = `${params[0].value[2]}<br/>${params[0].value[0]}<br/>`
         params.forEach((param: any) => {
           if (param.value !== undefined && param.seriesName !== undefined) { // Explicit checks
             tooltipContent += `<span style="display:inline-block;margin-right:4px;border-radius:10px;width:10px;height:10px;background-color:${param.color};"></span>`

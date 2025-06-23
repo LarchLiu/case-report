@@ -147,7 +147,9 @@ async function uploadImages() {
 async function getCaseReport() {
   try {
     const response = await $fetch(`/api/case?userIds=${selectedUser.value.map(u => u.id).join(',')}`)
-    caseReports.value = response || []
+    caseReports.value = response.sort((a, b) => {
+      return new Date(a.report_date).getTime() - new Date(b.report_date).getTime()
+    })
     console.log(response)
   }
   catch (error: any) {

@@ -4,9 +4,9 @@ services:
   web:
     build: .
     ports:
-      - "1122:3000"
+      - "1133:3000"
     volumes:
-      - 'salary-sheet-data:/app/.data'
+      - 'case-report-data:/app/.data'
     environment:
       NUXT_AI_API_BASE_URL: ${NUXT_AI_API_BASE_URL}
       NUXT_AI_API_KEY: ${NUXT_AI_API_KEY}
@@ -14,5 +14,5 @@ services:
     restart: always
 
 volumes:
-  salary-sheet-data:
+  case-report-data:
     driver: local

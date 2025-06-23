@@ -117,6 +117,8 @@ function updateChart() {
           const day = date.getDate().toString().padStart(2, '0')
           return `${year}-${month}-${day}`
         },
+        rotate: 45,
+        margin: 10,
       },
     },
     yAxis: {
@@ -139,7 +141,7 @@ watch(() => props.caseReports, () => {
 </script>
 
 <template>
-  <div ref="chartRef" style="width: 100%; height: 400px;" />
+  <div ref="chartRef" style="width: 100%; height: 500px;" />
 </template>
 
 <style scoped>
